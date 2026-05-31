@@ -115,6 +115,34 @@ Never random split complaint data — language patterns repeat across time!
 
 ---
 
+## Error Analysis
+
+### Most Confused Class Pairs (TF-IDF + LR)
+| True Label | Predicted | Count | Reason |
+|-----------|-----------|-------|--------|
+| Credit Card | Bank Account | ~45 | Both mention "account", "payment", "charge" |
+| Debt Collection | Credit Reporting | ~38 | Both mention credit bureaus |
+| Loans | Mortgage | ~22 | Both mention "loan", "payment", "servicer" |
+| Money Transfer | Bank Account | ~18 | Both mention "transfer", "account" |
+
+### Per-Class F1 Performance
+| Product | F1 | Support |
+|---------|-----|---------|
+| Credit Reporting | 0.93 | 4,999 |
+| Mortgage | 0.84 | 142 |
+| Bank Account | 0.78 | 387 |
+| Loans | 0.72 | 252 |
+| Money Transfer | 0.71 | 210 |
+| Debt Collection | 0.70 | 852 |
+| Credit Card | 0.68 | 440 |
+
+Weakest class: Credit Card (F1=0.68)
+Reason: Complaints overlap with Bank Account
+and Credit Reporting vocabulary.
+Fine-tuned BERT improved this to F1=0.70.
+
+---
+
 ## Leakage Controls
 
 **Allowed at prediction time (available at complaint submission):**
