@@ -1,0 +1,13 @@
+venv/
+models/
+data/
+reports/
+*.pkl
+*.npy
+*.csv
+*.png
+__pycache__/
+.ipynb_checkpoints/
+distilbert_complaint/
+*.pyc
+.env
