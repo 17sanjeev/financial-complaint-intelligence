@@ -81,9 +81,9 @@ Never random split complaint data — language patterns repeat across time!
 
 | Split | Rows | Date Range |
 |-------|------|-----------|
-| Train | 34,170 | 2015 – 2025 |
-| Val | 7,294 | 2025 |
-| Test | 7,294 | 2025 – 2026 |
+| Train | 33,980 | 2015 – 2025 |
+| Val | 7,282 | 2025 |
+| Test | 7,282 | 2025 – 2026 |
 
 ---
 
@@ -107,11 +107,19 @@ Never random split complaint data — language patterns repeat across time!
 | Model | PR-AUC | Note |
 |-------|--------|------|
 | Random baseline | 0.0107 | 1.07% positive rate |
-| TF-IDF + LR (balanced) | TBD | Run notebook 05 |
-| XGBoost (tuned spw) | TBD | Run notebook 05 |
+| TF-IDF + LR (balanced) | 0.0470 | 4.7x random baseline |
+| XGBoost (tuned spw=50) | 0.0337 | 3.4x random baseline |
 
 **Metrics used:** PR-AUC, Recall@5%, Recall@10%, Precision@K, Lift@K
 **NOT accuracy** — 97% accuracy by predicting all zeros is meaningless!
+
+### Business Impact (TF-IDF + LR, Test Set)
+| Review Queue | Complaints Reviewed | High-Risk Caught | Lift |
+|-------------|--------------------|--------------------|------|
+| Random | 10% | 10% | 1.0x |
+| Model Top 5% | 5% | 20.5% | 4.1x |
+| Model Top 10% | 10% | 35.6% | 3.6x |
+| Model Top 20% | 20% | 61.6% | 3.1x |
 
 ---
 
